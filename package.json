@@ -1,0 +1,23 @@
+{
+  "name": "air-support-division",
+  "version": "1.0.0",
+  "description": "Air Unit - قطاع الدعم الجوي",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxx1-git/Air-Support-Division.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxx1-git/Air-Support-Division/issues"
+  },
+  "homepage": "https://github.com/maxx1-git/Air-Support-Division#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
