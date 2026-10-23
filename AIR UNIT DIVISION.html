@@ -1,0 +1,307 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>قطاع الدعم الجوي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Reem+Kufi:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: night-ops briefing. Wide hero with a searchlight beam, then ruled sections that read like a field manual, no card grid sameness. */
+:root {
+  --bg: #0a0e17;
+  --surface: #111827;
+  --surface-2: #162033;
+  --line: #243249;
+  --fg: #e9eef6;
+  --muted: #94a3b8;
+  --amber: #ffb02e;
+  --amber-dim: rgba(255, 176, 46, 0.14);
+  --alert: #ff6b5c;
+  --f-display: "Reem Kufi", "Cairo", system-ui, sans-serif;
+  --f-body: "Cairo", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { direction: rtl; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.85;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+.wrap { max-width: 1040px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 700; margin: 0; text-wrap: balance; line-height: 1.25; }
+p { margin: 0; }
+
+/* HERO */
+.hero { position: relative; padding-block: 56px 0; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: center; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.28em; color: var(--amber); direction: ltr; text-align: right; }
+.hero h1 { font-size: clamp(44px, 9vw, 92px); margin-top: 14px; }
+.hero h1 span { color: var(--amber); }
+.tagline { color: var(--muted); font-size: 20px; margin-top: 14px; }
+.heli-box { position: relative; min-height: 260px; }
+.heli-box svg { width: 100%; height: auto; display: block; }
+.beam { transform-origin: 190px 150px; animation: sway 7s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+.rotor { transform-origin: 190px 92px; animation: spin 0.5s linear infinite; }
+@keyframes spin { from { transform: scaleX(1); } 50% { transform: scaleX(0.55); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .beam, .rotor { animation: none; } }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; border-top: 1px solid var(--line); }
+.stat { padding: 20px 0 22px; padding-inline-end: 16px; }
+.stat + .stat { border-inline-start: 1px solid var(--line); padding-inline-start: 20px; }
+.stat b { display: block; font-family: var(--f-display); font-size: 40px; color: var(--amber); line-height: 1.1; }
+.stat span { color: var(--muted); font-size: 15px; }
+
+/* SECTIONS */
+section { padding-block: 56px 8px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.sec-head h2 { font-size: 32px; }
+.sec-head small { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.2em; color: var(--amber); direction: ltr; margin-inline-start: auto; }
+
+.missions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.mission { background: var(--surface); padding: 26px 26px 28px; min-width: 0; }
+.mission.lead { grid-column: 1 / -1; background: var(--surface-2); }
+.tag { display: inline-block; font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.16em; color: var(--bg); background: var(--amber); padding: 1px 10px; margin-bottom: 12px; direction: ltr; }
+.mission h3 { font-size: 24px; margin-bottom: 8px; }
+.mission.lead h3 { font-size: 30px; }
+.mission p { color: #c3cddc; }
+
+.rows { border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 190px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.row h3 { font-size: 22px; color: var(--amber); }
+.row p { color: #c3cddc; min-width: 0; }
+.row .note { display: block; margin-top: 8px; color: var(--muted); font-size: 15px; }
+
+.duo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.role { background: var(--surface); border: 1px solid var(--line); padding: 26px; min-width: 0; }
+.role.star { border-color: var(--amber); background: linear-gradient(180deg, var(--amber-dim), var(--surface) 70%); }
+.role h3 { font-size: 26px; margin-bottom: 10px; }
+.role p { color: #c3cddc; }
+.callout { margin-top: 14px; padding: 12px 14px; background: rgba(0,0,0,0.3); border: 1px dashed var(--line); font-size: 15px; color: var(--muted); }
+.callout em { color: var(--fg); font-style: normal; }
+
+.radio { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; }
+.callsign { background: var(--surface); border: 1px solid var(--line); padding: 26px; display: flex; flex-direction: column; justify-content: center; gap: 8px; min-width: 0; }
+.callsign .cs { font-family: var(--f-mono); font-weight: 600; font-size: clamp(40px, 8vw, 64px); color: var(--amber); direction: ltr; text-align: right; line-height: 1.1; letter-spacing: 0.04em; }
+.callsign p { color: var(--muted); }
+.callsign s { color: var(--alert); text-decoration-thickness: 2px; }
+.clear { background: var(--surface-2); border: 1px solid var(--line); padding: 26px; min-width: 0; }
+.clear h3 { font-size: 24px; margin-bottom: 10px; }
+.clear p { color: #c3cddc; }
+.wave { display: flex; align-items: center; gap: 4px; height: 40px; margin-top: 18px; direction: ltr; }
+.wave i { flex: 1; background: var(--amber); opacity: 0.85; border-radius: 1px; height: var(--h); }
+.wave i.off { background: var(--line); height: 2px; }
+
+.nogo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.no { background: var(--surface); border: 1px solid var(--line); padding: 22px 24px; display: grid; grid-template-columns: 34px 1fr; gap: 14px; min-width: 0; }
+.no svg { width: 30px; height: 30px; margin-top: 6px; }
+.no h3 { font-size: 21px; margin-bottom: 4px; }
+.no p { color: #c3cddc; font-size: 16px; line-height: 1.8; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+.step { padding: 24px 22px 26px; border: 1px solid var(--line); background: var(--surface); min-width: 0; }
+.step + .step { border-inline-start: none; }
+.step .lvl { display: flex; gap: 5px; margin-bottom: 14px; direction: ltr; justify-content: flex-end; }
+.step .lvl i { width: 26px; height: 6px; background: var(--line); }
+.step .lvl i.on { background: var(--amber); }
+.step.last .lvl i.on { background: var(--alert); }
+.step h3 { font-size: 24px; }
+.step p { color: var(--muted); margin-top: 6px; font-size: 16px; }
+.step.last { background: linear-gradient(180deg, rgba(255,107,92,0.12), var(--surface) 70%); border-color: var(--alert); }
+.after { margin-top: 14px; padding: 16px 20px; border: 1px solid var(--line); background: var(--surface-2); color: #c3cddc; }
+.after b { color: var(--amber); font-family: var(--f-display); font-size: 20px; }
+
+.gate { margin-block: 56px 72px; padding: 30px; border: 2px solid var(--amber); background: var(--amber-dim); display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center; }
+.gate .big { font-family: var(--f-display); font-size: clamp(54px, 10vw, 88px); line-height: 1; color: var(--amber); }
+.gate h3 { font-size: 26px; margin-bottom: 4px; }
+.gate p { color: #d5dcea; }
+
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .hero { padding-top: 36px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .heli-box { min-height: 0; order: -1; max-width: 360px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-inline-start: none; padding-inline-start: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .missions, .duo, .radio, .nogo { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; gap: 6px; }
+  .steps { grid-template-columns: 1fr; }
+  .step + .step { border-inline-start: 1px solid var(--line); border-top: none; }
+  .gate { grid-template-columns: 1fr; gap: 10px; }
+  .sec-head h2 { font-size: 27px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">AIR UNIT</div>
+        <h1>قطاع <span>الدعم</span> الجوي</h1>
+        <p class="tagline">عيون شرطة لاست تشانس </p>
+      </div>
+      <div class="heli-box" aria-hidden="true">
+        <svg viewBox="0 0 380 330" fill="none">
+          <defs>
+            <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffb02e" stop-opacity="0.55"/>
+              <stop offset="1" stop-color="#ffb02e" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g class="beam"><polygon points="182,150 198,150 300,326 80,326" fill="url(#bm)"/></g>
+          <g class="rotor"><line x1="80" y1="92" x2="300" y2="92" stroke="#ffb02e" stroke-width="4" stroke-linecap="round"/></g>
+          <line x1="190" y1="92" x2="190" y2="108" stroke="#ffb02e" stroke-width="4"/>
+          <ellipse cx="190" cy="128" rx="68" ry="34" fill="#162033" stroke="#ffb02e" stroke-width="3"/>
+          <path d="M240 118L350 104L350 124L240 142Z" fill="#162033" stroke="#ffb02e" stroke-width="3"/>
+          <path d="M350 86L350 134" stroke="#ffb02e" stroke-width="5" stroke-linecap="round"/>
+          <path d="M138 120L172 120L172 106L142 108Z" fill="#ffb02e" fill-opacity="0.45"/>
+          <line x1="140" y1="170" x2="238" y2="170" stroke="#ffb02e" stroke-width="4" stroke-linecap="round"/>
+          <line x1="160" y1="158" x2="160" y2="170" stroke="#ffb02e" stroke-width="3"/>
+          <line x1="218" y1="158" x2="218" y2="170" stroke="#ffb02e" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+    
+  </header>
+
+  <section>
+    <div class="sec-head"><h2>مهام الوحدة</h2><small>MISSIONS</small></div>
+    <div class="missions">
+      <article class="mission lead">
+        <span class="tag">المهمه رقم 1</span>
+        <h3>المطاردات</h3>
+        <p>لما تبدا مطاردة وعربيات الشرطه مش لاحقه هنا بيجي دور وحدة الدعم الجوي اول ما بيكون عندو رؤية المرافق الي معاه هيبدا هو ب تحديث حالة المطاردة لباقي الوحدات اللي على الارض مثلا العربيه حاليا متوجهه كذا كذا  وسرعتها ولو دخلت نفق او لو موجود تدخل خارجي بيقرب او نزل السواق وجري على رجله او لو تم فقدان الرؤيه بيتم تنشيط الموقع كامل ب الحراري </p>
+      </article>
+      <article class="mission">
+        <h3>ادارة المشهد</h3>
+        <p>الطيار والمرافق شايفين الموقف كله من فوق وبيقدر ينبه العربيات ب اي حاجه ممكن تحصلهم  او يحذرهم من كمين مستنيهم في اي مكان  </p>
+      </article>
+      <article class="mission">
+        <h3>البحث والانقاذ</h3>
+        <p>البحث عن الاشخاص المفقودين او الهاربين في الاماكن صعبة الوصول مثل الاماكن العالية والجبال او البحار والمسطحات المائية </p>
+      </article>
+      <article class="mission">
+        <h3>دعم المداهمات</h3>
+        <p> لو في مداهمة او عملية اقتحام بيتم مسح الموقع وتنشيطو ب الكامل للتامين والحذر التام من وجود شي غير محسوب </p>
+      </article>
+      <article class="mission">
+       <h3>تأمين المواكب </h3>
+        <p>الاير بيراقب الطريق من فوق قبل المواكب والتجمعات الكبيره ويبلغ الوحدات باي حاجه مشبوهه او زحمه تعطل الطريق</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>المعدات</h2><small>EQUIPMENT</small></div>
+    <p style="color:var(--muted);margin-bottom:18px">معدات الهيلكوبتر</p>
+    <div class="rows">
+      <div class="row">
+        <h3>كاميرا حراريه </h3>
+        <p>كاميرا في غاية الاهمية لان بتقدر تشكف حرارة الشخص بيها وتعرف مكانو وفيها زوم </p>
+      </div>
+      <div class="row">
+        <h3>كشاف جوي</h3>
+        <p>كشاف قوي جدا تقدر تتحكم فيه ب اريحية وفيه زوم تقدر تنور للسيارات في مطاردات الليل</p>
+      </div>
+      <div class="row">
+        <h3>نايت فيجن - Night Vision </h3>
+        <p>نايت فيجن تقدر تشوف بيه في الاماكن المظلمة وفي الليل </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>الطيار والمرافق</h2><small>CREW</small></div>
+    <p style="color:var(--muted);margin-bottom:18px">لازم فردين جوه الهيلي علشان تطلع</p>
+    <div class="duo">
+      <article class="role">
+        <h3>الطيار</h3>
+        <p> هو مسوؤل مسوؤلية كاملة عن  حياة الاشخاص في الهيلي ويجب ان يكون تركيزه الكامل في القيادة فقط لتجنب الحوادث </p>
+      </article>
+      <article class="role star">
+        <span class="tag">TFO</span>
+        <h3>المرافق</h3>
+        <p>في حالة الانضمام لمطاردة تكون الاحقية لمرافق الطيار ب التبليغ في الراديو وسكوت باقي الوحدات الارضية لضمان التوجية الصحيح</p>
+        <div class="callout">مثال للتبليغ <em>حاليا الشخص متوجه شمال شارع سان اندرياس       </em></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>الراديو</h2><small>RADIO</small></div>
+    <div class="radio">
+      <div class="callsign">
+        <div class="cs">AIR-1</div>
+        <p>ده شكل النداء <s>صقر 1</s> مفيش حاجه اسمها كده</p>
+      </div>
+      <div class="clear">
+        <h3>الراديو يسكت</h3>
+        <p>اول ما تنضم وحدة الدعم في المطاردة البلاغات هتكون عند ال TFO عشان نتجنب التوجيه الغير صحيح  في المطاردة وتكون البلاغات صحيحة  </p>
+        <div class="wave" aria-hidden="true">
+          <i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i>
+          <i style="--h:30%"></i><i style="--h:70%"></i><i style="--h:45%"></i><i style="--h:95%"></i><i style="--h:60%"></i><i style="--h:80%"></i><i style="--h:35%"></i><i style="--h:65%"></i><i style="--h:50%"></i><i style="--h:85%"></i><i style="--h:40%"></i>
+          <i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>الممنوعات</h2><small>FAIL RP</small></div>
+    <div class="nogo">
+      <article class="no">
+        <svg viewBox="0 0 30 30" fill="none" stroke="#ff6b5c" stroke-width="2.5" stroke-linecap="round"><circle cx="15" cy="15" r="12"/><line x1="6.5" y1="23.5" x2="23.5" y2="6.5"/></svg>
+        <div><h3>الهبوط في الشوارع </h3><p>ممنوع منعا باتا الهبوط في الشوارع الا في حالات الهبوط الاضطراري يفضل الهبوط علي سطح مستوي او علي مهبط الهيليكوبتر</p></div>
+      </article>
+      <article class="no">
+        <svg viewBox="0 0 30 30" fill="none" stroke="#ff6b5c" stroke-width="2.5" stroke-linecap="round"><circle cx="15" cy="15" r="12"/><line x1="6.5" y1="23.5" x2="23.5" y2="6.5"/></svg>
+        <div><h3>الطيران المنخفض</h3><p>ارتفاع امن ممنوع الطيران المنخفض جدا وسط البيوت الا لضروره تكتيكيه قصوى</p></div>
+      </article>
+      <article class="no">
+        <svg viewBox="0 0 30 30" fill="none" stroke="#ff6b5c" stroke-width="2.5" stroke-linecap="round"><circle cx="15" cy="15" r="12"/><line x1="6.5" y1="23.5" x2="23.5" y2="6.5"/></svg>
+        <div><h3>مناطق ممنوع الطيران</h3><p>زي السجن والقواعد العسكريه ممنوع الاقتراب منها غير باذن</p></div>
+      </article>
+      <article class="no">
+        <svg viewBox="0 0 30 30" fill="none" stroke="#ff6b5c" stroke-width="2.5" stroke-linecap="round"><circle cx="15" cy="15" r="12"/><line x1="6.5" y1="23.5" x2="23.5" y2="6.5"/></svg>
+        <div><h3>تجاهل الاصابه</h3><p>لو كانت الهيلي متضررة خوفا علي حياة الطيار والمرافق لازم يتم هبوط اضطراري فورا لتجنب الحوادث  </p></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>العقوبات</h2><small>PENALTIES</small></div>
+    <div class="steps">
+      <div class="step">
+        <div class="lvl"><i class="on"></i><i></i><i></i></div>
+        <h3>انذار اول</h3>
+        <p>اول مخالفه خاصه بالوحده</p>
+      </div>
+      <div class="step">
+        <div class="lvl"><i class="on"></i><i class="on"></i><i></i></div>
+        <h3>انذار تاني</h3>
+        <p>لو المخالفه اتكررت</p>
+      </div>
+      <div class="step last">
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        <h3>سحب الرخصه</h3>
+        <p>لو كملت الاخطاء</p>
+      </div>
+    </div>
+    <div class="after">بعد سحب الرخصه تقدر تقدم عليها تاني بعد <b>1 اسابيع</b></div>
+  </section>
+
+  <div class="gate">
+    <div class="big">5</div>
+    <div>
+      <h3>شرط خروج الهيلي</h3>
+      <p>لازم يكون في الميدان 5 وحدات  عشان تقدر تباشر ب هيلي الا باذن من الرئيس او النائب وفي حال مخالفة هذا القرار هيتم تعريضك لسحب الرخصة الفوري</p>
+    </div>
+  </div>
+</div>
+
+</body></html>
